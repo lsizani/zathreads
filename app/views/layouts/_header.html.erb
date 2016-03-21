@@ -1,0 +1,40 @@
+<div class="row" >
+  <nav class="top-bar column" data-topbar>
+
+    <ul class="title-area">
+      <li class="name">
+        <h1>
+          <a href="/">
+            <i class="fi-play-video"></i> ZA Threads
+          </a>
+        </h1>
+      </li>
+    </ul>
+
+    <ul class="right">
+      <%if signed_in?%>
+          <li>
+            <%= link_to cart_path do%>
+                <i class="fi-shopping-cart"></i>
+                My Cart
+                (<span class="cart-count"><%=current_user.cart_count%></span>)
+            <%end%>
+          | <%=link_to current_user.name, edit_user_registration_path%> |
+            <% if current_user.admin? %>
+              <%= link_to 'Manage Designers', designers_path %> |
+            <% end %>
+            <% if current_user.is_designer? and current_user.designer_id.nil?%>
+                <%= link_to 'Create Designer Profile', new_designer_path %> |
+            <% end %>
+            <% if current_user.is_designer? and not current_user.designer_id.nil?%>
+                <%= link_to 'Edit Designer Profile', edit_designer_path(current_user.designer_id)%> |
+                <%= link_to 'Manage My Products', :controller=>'products', :action=>'index', :id => current_user.designer_id%> |
+            <% end %>
+            <%=link_to "Logout", destroy_user_session_path, method: :delete%>
+          </li>
+      <%else%>
+          <li><%=link_to "Register", new_user_registration_path%> | <%=link_to "Login", new_user_session_path%></li>
+      <%end%>
+    </ul>
+  </nav>
+</div>
