@@ -42,7 +42,6 @@ class DesignersController < ApplicationController
   def update
     respond_to do |format|
       if @designer.update(designer_params)
-        @designer.user.update_designer_id(@designer.id)
         format.html { redirect_to @designer, notice: 'Designer was successfully updated.' }
         format.json { render :show, status: :ok, location: @designer }
       else
@@ -70,7 +69,7 @@ class DesignersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def designer_params
-      params.require(:designer).permit(:name, :surname, :cell_number, :email, :address_line_1, :address_line_2, :address_line_3,
-                                       :surburb, :city, :province, :country, :post_code, :bio, :photo_url, :user_id)
+      params.require(:designer).permit(:name, :surname, :contact_number, :email, :address_line_1, :address_line_2, :address_line_3,
+                                       :suburb, :city, :province, :country, :post_code, :bio, :photo_url, :user_id)
     end
 end

@@ -17,3 +17,10 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+
+function showhide(id, sender_id) {
+    var e = document.getElementById(id);
+    var sender = document.getElementById(sender_id);
+    e.style.display = (sender.checked) ? 'block' : 'none';
+}

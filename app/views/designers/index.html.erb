@@ -1,47 +1,19 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Designers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Cell number</th>
-      <th>Email</th>
-      <th>Address </th>
-      <th>Bio</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @designers.each do |designer| %>
-      <tr>
-        <td><%= designer.name %></td>
-        <td><%= designer.surname %></td>
-        <td><%= designer.cell_number %></td>
-        <td><%= designer.email %></td>
-        <td><%= designer.address_line_1 %><br>
-            <%= designer.address_line_2 %><br>
-            <%= designer.address_line_3 %><br>
-            <%= designer.surburb %><br>
-            <%= designer.city %><br>
-            <%= designer.province %><br>
-            <%= designer.country %><br>
-            <%= designer.post_code %></td>
-        <td><%= designer.bio %></td>
-        <td><%= link_to 'Show', designer %></td>
-        <td><%= link_to 'Edit', edit_designer_path(designer) %></td>
-        <td><%= link_to 'Destroy', designer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% if not designer.approved? %>
-          <td><%= link_to 'Approve', designer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="row column text-center">
+  <h2>Meet Our Designers</h2>
+  <hr>
+</div>
+<div class="row small-up-2 large-up-4">
+  <% @designers.each do |designer| %>
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/300x400">
+        <h5><%= designer.name %></h5>
+        <p><%= designer.email %></p>
+        <p><%= designer.bio %></p>
+      </div>
+  <% end %>
+</div>
+<hr>
 <br>
 
-<%= link_to 'New Designer', new_designer_path %>
+<%= link_to 'Home', root_path %>

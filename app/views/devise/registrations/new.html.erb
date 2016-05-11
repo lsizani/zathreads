@@ -10,15 +10,29 @@
 
       <div class="mb1"><%= f.email_field :email, placeholder: "Email", class: "radius" %></div>
 
-      <div class="mb1">
-        <%= f.label "Check to apply as designer?" %>
-        <%= f.check_box :designer, class: "radius" %>
-      </div>
-
-
       <div class="mb1"><%= f.password_field :password, autocomplete: "off", placeholder: "Password", class: "radius" %></div>
 
       <div class="mb1"><%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm password", class: "radius" %></div>
+
+      <div class="address">
+        <p>Postal Address</p>
+        <div class="mb1"><%= f.text_field :address_line_1, placeholder: "Address Line 1", class: "radius" %></div>
+        <div class="mb1"><%= f.text_field :address_line_2, placeholder: "Address Line 2", class: "radius" %></div>
+        <div class="mb1"><%= f.text_field :address_line_3, placeholder: "Address Line 3", class: "radius" %></div>
+        <div class="mb1"><%= f.text_field :suburb, placeholder: "Suburb", class: "radius" %></div>
+        <div class="mb1"><%= f.text_field :city, placeholder: "City", class: "radius" %></div>
+        <div class="mb1"><%= f.text_field :province, placeholder: "Province/State", class: "radius" %></div>
+        <div class="mb1"><%= f.text_field :country, placeholder: "Country", class: "radius" %></div>
+      </div>
+      <div class="mb1">
+        <%= f.label "Apply as designer?" %>
+        <%= f.check_box :is_designer, {id: 'chk',  class: "radius", onchange: "showhide('designer', 'chk')"} %>
+      </div>
+
+      <div id="designer" style="display:none;">
+        <div class="mb1"><%= f.text_area :bio, placeholder: "Bio", class: "radius" %></div>
+        <div class="mb1"><%= f.text_field :store_name, placeholder: "Store Name", class: "radius" %></div>
+      </div>
 
       <div><%= f.submit "Let's Go", class: "button" %></div>
   <% end %>

@@ -22,5 +22,9 @@ class User < ActiveRecord::Base
       self.save
     end
   end
+
+  def my_product(prod)
+    return  prod.designer.user.id == self.id
+  end
   
 end

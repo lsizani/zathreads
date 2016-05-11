@@ -1,4 +1,3 @@
-class Designer < ActiveRecord::Base
+class Designer < User
   has_many :products
-  belongs_to :user
 end
