@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: zathreads_production
   username: zathreads
   password: <%= ENV['ZATHREADS_DATABASE_PASSWORD'] %>
