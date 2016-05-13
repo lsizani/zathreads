@@ -42,6 +42,7 @@ group :development, :test do
 end
 
 group :heroku do
+  ruby '2.3.0'
   gem 'pg'
 end
 
